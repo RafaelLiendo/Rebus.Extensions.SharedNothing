@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rebus.Extensions.SharedNothing", "Rebus.Extensions.SharedNothing\Rebus.Extensions.SharedNothing.csproj", "{8F147BAF-EFB4-4977-8CBA-C95E942D2BA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ping", "Sample.Ping\Sample.Ping.csproj", "{F5EC0694-4EBF-4B77-A8FB-9B49F3CA68C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Pong", "Sample.Pong\Sample.Pong.csproj", "{678D4BBC-793C-414D-9DDA-0353630120E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8F147BAF-EFB4-4977-8CBA-C95E942D2BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F147BAF-EFB4-4977-8CBA-C95E942D2BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F147BAF-EFB4-4977-8CBA-C95E942D2BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5EC0694-4EBF-4B77-A8FB-9B49F3CA68C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EC0694-4EBF-4B77-A8FB-9B49F3CA68C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EC0694-4EBF-4B77-A8FB-9B49F3CA68C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EC0694-4EBF-4B77-A8FB-9B49F3CA68C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678D4BBC-793C-414D-9DDA-0353630120E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678D4BBC-793C-414D-9DDA-0353630120E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678D4BBC-793C-414D-9DDA-0353630120E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678D4BBC-793C-414D-9DDA-0353630120E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
