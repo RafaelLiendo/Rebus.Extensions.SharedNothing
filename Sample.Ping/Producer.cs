@@ -54,7 +54,7 @@ q) Quit
         void PublishWithExplicitTopicNaming()
         {
             Console.WriteLine("Publishing Ping");
-            _bus.Advanced.Topics.Publish("PingApp:PingEvent", new PingEvent1 { Foo = "FooValue" }).Wait();
+            _bus.Advanced.Topics.Publish("PingApp:PingEvent", new { Foo = "FooValue" }).Wait();
         }
     }
 }

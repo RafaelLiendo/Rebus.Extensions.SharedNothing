@@ -54,7 +54,7 @@ q) Quit
         void PublishWithExplicitTopicNaming()
         {
             Console.WriteLine("Publishing PongEvent2");
-            _bus.Advanced.Topics.Publish("PongApp:PongEvent2", new PongEvent2 { Bar = "BarValue" }).Wait();
+            _bus.Advanced.Topics.Publish("PongApp:PongEvent", new { Bar = "BarValue" }).Wait();
         }
     }
 }
