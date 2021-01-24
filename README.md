@@ -133,4 +133,4 @@ namespace Sample.Pong
 
 ## How was that accomplished?
 
-Whell... the it wasen't perfect. In an ideal solution you wouldn't require any headers to deserialize the message on the consumer side.
+Whell... the it wasen't perfect. In an ideal solution you wouldn't require any headers to deserialize the message on the consumer side. But here we had to add the Topic name as the MessageType
