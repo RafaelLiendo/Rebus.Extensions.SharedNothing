@@ -1,6 +1,7 @@
 # Rebus.Extensions.SharedNothing
 
-Provides an Extensions to make to the "No code sharing" scenario easier to configure for [Rebus](https://github.com/rebus-org/Rebus).
+Provides extensions to make to the "No code sharing" scenario easier to configure on [Rebus](https://github.com/rebus-org/Rebus).
+Also it aims to introduce no breaking changes and even be able to have both scenarios at the same time, with or without sharing a dll.
 
 ![](https://raw.githubusercontent.com/rebus-org/Rebus/master/artwork/little_rebusbus2_copy-200x200.png)
 
@@ -16,13 +17,13 @@ The sample providade still depends on the fully quallified type name (including 
 
 https://github.com/rebus-org/RebusSamples/blob/71f50f3d605cf23402e37057ab7f199d437b26f6/SharedNothing/Subscriber/CustomMessageDeserializer.cs#L22
 
-### with this repo's implementation, the applications only have to agree on a topic name
+### On the other hand, with this repo's implementation, the applications only have to agree on a topic name
 
 ## Show me the code!
 
 ### here is the first app
 
-```c#
+```csharp
 using Microsoft.Extensions.DependencyInjection;
 using Rebus.ServiceProvider;
 using Rebus.Extensions.SharedNothing;
@@ -73,7 +74,7 @@ namespace Sample.Ping
 
 ### You can publish messages relying on the type mapping showed above or you can explicitly specify the topic name
 
-```c#
+```csharp
 _bus.Publish(new PingEvent1 { Foo = "FooValue" }).Wait();
 //or
 _bus.Advanced.Topics.Publish("PingApp:PingEvent", new { Foo = "FooValue" }).Wait();
@@ -82,7 +83,7 @@ _bus.Advanced.Topics.Publish("PingApp:PingEvent", new { Foo = "FooValue" }).Wait
 
 ### Same thing on the second app, the topics are the same, but they map to a completly different type
 
-```c# diff
+```csharp
 namespace Sample.Pong
 {
   class Program
@@ -133,4 +134,14 @@ namespace Sample.Pong
 
 ## How was that accomplished?
 
-Whell... the it wasen't perfect. In an ideal solution you wouldn't require any headers to deserialize the message on the consumer side. But here we had to add the Topic name as the MessageType
+Whell... the it wasen't perfect. In an ideal solution you wouldn't require any headers to deserialize the message on the consumer side. But here we had to add the Topic name as the MessageType.
+
+![](./Prints/Message.png)
+
+#### But besides that, it the end result looks good. The queues and topics have the correct names.
+
+![](./Prints/Queue%20and%20Exchange%20names.png)
+
+#### And the consumer correctly desserialzies the message
+
+![](./Prints/Console.png)
