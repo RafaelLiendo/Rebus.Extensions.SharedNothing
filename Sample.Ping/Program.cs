@@ -20,21 +20,14 @@ namespace Sample.Ping
 
             services.AddSingleton<Producer>();
 
-            // 1.1. Configure Rebus
             services.AddRebus(configure => configure
                 .Transport(t => t.UseRabbitMq(connectionString, inputQueueName))
                 .Logging(l => l.None())
-                .UseSharedNothingApproach()
-                //.UseExplicitMessageTypeNameConvention(new Dictionary<string, Type>
-                //{
-                //    { "PingApp:PingEvent", typeof(PingEvent1) },
-                //    { "PongApp:PongEvent", typeof(PongEvent1) },
-                //})
-                //or
-                .Serialization(s => s.UseCustomMessageTypeNames()
+                .UseSharedNothingApproach(builder => builder
                     .AddWithCustomName<PingEvent1>("PingApp:PingEvent")
                     .AddWithCustomName<PongEvent1>("PongApp:PongEvent")
-                    .AllowFallbackToDefaultConvention()
+                    //optional
+                    //.AllowFallbackToDefaultConvention()
                 )
             );
 

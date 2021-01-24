@@ -24,7 +24,8 @@ namespace Rebus.Extensions.SharedNothing
     [StepDocumentation(
 @"When using bus.Advanced.Topics.Publish('Topic:Name', <AnonymousType>)
 or bus.Advanced.Topics.Publish('Topic:Name', <UnmappedType>)
-Set MessageType Headers from topic name")]
+Get the topic name from address Example ( MyApp:MyEvent@RebusTopics )
+Then set as the topic name as the MessageType")]
     public class TopicNameAsMessageTypePipeline : IOutgoingStep
     {
         public async Task Process(OutgoingStepContext context, Func<Task> next)
