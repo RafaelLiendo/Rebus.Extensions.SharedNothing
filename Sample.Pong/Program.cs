@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rebus.ServiceProvider;
 using Rebus.Extensions.SharedNothing;
-using System.Collections.Generic;
-using System;
 using Rebus.Config;
-using Rebus.Serialization.Custom;
 
 namespace Sample.Pong
 {
@@ -23,17 +20,11 @@ namespace Sample.Pong
             services.AddRebus(configure => configure
                 .Transport(t => t.UseRabbitMq(connectionString, inputQueueName))
                 .Logging(l => l.None())
-                .UseSharedNothingApproach()
-                //.UseExplicitMessageTypeNameConvention(new Dictionary<string, Type>
-                //{
-                //    { "PingApp:PingEvent", typeof(PingEvent2) },
-                //    { "PongApp:PongEvent", typeof(PongEvent2) },
-                //})
-                //or
-                .Serialization(s => s.UseCustomMessageTypeNames()
+                .UseSharedNothingApproach(builder => builder
                     .AddWithCustomName<PingEvent2>("PingApp:PingEvent")
                     .AddWithCustomName<PongEvent2>("PongApp:PongEvent")
-                    .AllowFallbackToDefaultConvention()
+                    //optional
+                    //.AllowFallbackToDefaultConvention()
                 )
             );
 

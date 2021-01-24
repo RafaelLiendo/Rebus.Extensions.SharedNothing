@@ -2,7 +2,6 @@
 using Rebus.Serialization;
 using Rebus.Topic;
 using System;
-using System.Collections.Generic;
 
 namespace Rebus.Extensions.SharedNothing
 {

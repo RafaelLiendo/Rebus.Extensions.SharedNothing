@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rebus.ServiceProvider;
 using Rebus.Extensions.SharedNothing;
-using System.Collections.Generic;
-using System;
 using Rebus.Config;
-using Rebus.Serialization.Custom;
 
 namespace Sample.Ping
 {
