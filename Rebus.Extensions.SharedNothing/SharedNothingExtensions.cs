@@ -6,9 +6,9 @@ namespace Rebus.Extensions.SharedNothing
 {
     public static class SharedNothingExtensions
     {
-        public static RebusConfigurer UseSharedNothingApproach(this RebusConfigurer rebus, Dictionary<string, Type> topicsDictionary) => rebus
+        public static RebusConfigurer UseSharedNothingApproach(this RebusConfigurer rebus) => rebus
             .UsePureJsonSerialization()
-            .UseExplicitMessageTypeNameConvention(topicsDictionary)
-            .UseTopicNameSameAsMessageTypeNameConvetion();        
+            .UseTopicNameSameAsMessageTypeNameConvetion()
+            .UseTopicNameAsMessageTypePipeline();
     }
 }

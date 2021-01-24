@@ -6,22 +6,19 @@ using Rebus.Pipeline.Send;
 using Rebus.Messages;
 using System.Linq;
 
-namespace RebusExtensions
+namespace Rebus.Extensions.SharedNothing
 {
     public static class EnsureMessageTypeHeadersWhenUsingAdvancedTopicsApiExtensions
     {
-        public static OptionsConfigurer UseTopicNameAsMessageTypePipeline(this OptionsConfigurer c)
-        {
-            c.Decorate<IPipeline>(c =>
-            {
-                var pipeline = c.Get<IPipeline>();
-                var step = new TopicNameAsMessageTypePipeline();
-                return new PipelineStepInjector(pipeline)
-                    .OnSend(step, PipelineRelativePosition.Before, typeof(AssignDefaultHeadersStep));
-            });
-
-            return c;
-        }
+        internal static RebusConfigurer UseTopicNameAsMessageTypePipeline(this RebusConfigurer rebus) => rebus
+            .Options(config => config
+                .Decorate<IPipeline>(c =>
+                {
+                    var pipeline = c.Get<IPipeline>();
+                    var step = new TopicNameAsMessageTypePipeline();
+                    return new PipelineStepInjector(pipeline)
+                        .OnSend(step, PipelineRelativePosition.Before, typeof(AssignDefaultHeadersStep));
+                }));
     }
 
     [StepDocumentation(
